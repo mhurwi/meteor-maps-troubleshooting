@@ -1,0 +1,28 @@
+<template name="layout">
+  <head>
+    <title>map-troubleshooting</title>
+  </head>
+
+  <body>
+    {{> yield}}
+  </body>
+</template>
+
+
+<template name="shipments">
+  <p>All Shipments</p>
+  <div class="map-container">
+    {{> googleMap name="indexMap" options=indexMapOptions}}
+  </div>
+  {{#each shipments}}
+    <p>{{#linkTo route="shipment"}}View Shipment #{{_id}}{{/linkTo}}</p>
+  {{/each}}
+</template>
+
+<template name="shipment">
+  <p><a href="/">Back</a></p>
+  <p>Shipment #{{_id}}</p>
+  <div class="map-container">
+    {{> googleMap name="showMap" options=showMapOptions}}
+  </div>
+</template>
